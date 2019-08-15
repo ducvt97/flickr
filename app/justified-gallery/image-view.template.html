@@ -1,0 +1,25 @@
+<div role="dialog" aria-label="Eat me!" layout="column" layout-align="center center">
+    <div class="split left">
+        <div class="centered">
+            <!-- <img flex alt="Delicious donut" src="{{mainImage.src}}"> -->
+        </div>
+    </div>
+        
+    <div class="split right">
+        <div class="centered">
+            <md-button flex class="md-primary" ng-click="closeImageView()">
+                <i class="fas fa-times"></i>
+            </md-button>
+        </div>
+    </div>
+    <div class="demo-dialog-content">
+        <div layout="row" >
+                <img flex alt="Delicious donut" src="{{mainImage.src}}" width="200%" height="200%">
+        </div>
+    </div>
+    
+    <div layout="row" class="demo-dialog-button" >
+        <button ng-click="closeImageView()">Close</button>
+        
+    </div>
+</div>

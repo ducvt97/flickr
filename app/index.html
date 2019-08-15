@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app="myflickrApp">
+    <!-- <html lang="en"> -->
+  <head>
+    <meta charset="utf-8">
+    <title>MyFlickr</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="justified-gallery/justified-gallery.css" />
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="core/core.module.js"></script>
+    <script src="core/image/image.module.js"></script>
+    <script src="core/image/image.service.js"></script>
+    <script src="explore/explore.module.js"></script>
+    <script src="explore/explore.component.js"></script>
+    <script src="justified-gallery/justified-gallery.module.js"></script>
+    <script src="justified-gallery/justified-gallery.component.js"></script>
+    <script src="justified-gallery/justified-gallery.controller.js"></script>
+
+  </head>
+  <body>
+    <div ng-view></div>
+
+  </body>
+</html>
