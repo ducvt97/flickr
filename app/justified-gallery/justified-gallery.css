@@ -48,17 +48,17 @@
 }
 
 /* If you want the content centered horizontally and vertically */
-.centered {
+/* .centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-}
+} */
 
 /* Style the image inside the centered container, if needed */
 .centered img {
-    width: 200%;
-    height: 200%;
+    width: 400;
+    height: 300;
     border-radius: 50%;
 }

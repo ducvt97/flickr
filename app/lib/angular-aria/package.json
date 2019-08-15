@@ -1,28 +1,32 @@
 {
-  "_from": "angular-aria",
+  "_args": [
+    [
+      "angular-aria@1.7.8",
+      "E:\\Hoc\\project\\AngularJS\\flickr"
+    ]
+  ],
+  "_from": "angular-aria@1.7.8",
   "_id": "angular-aria@1.7.8",
   "_inBundle": false,
   "_integrity": "sha512-facq/111sZKL2wUUqRA1GnGt+lZ8KAcX9Aw04cNA+OyEkoaoRC77NY4VSOTQxghlSd0OPAdLeFnmETnuiWrpLg==",
   "_location": "/angular-aria",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "angular-aria",
+    "raw": "angular-aria@1.7.8",
     "name": "angular-aria",
     "escapedName": "angular-aria",
-    "rawSpec": "",
+    "rawSpec": "1.7.8",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "1.7.8"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/angular-aria/-/angular-aria-1.7.8.tgz",
-  "_shasum": "3954250ef516b57cdd3cdf41ff4ee6fcfdc84ceb",
-  "_spec": "angular-aria",
-  "_where": "D:\\project\\angularJS\\my-flickr",
+  "_spec": "1.7.8",
+  "_where": "E:\\Hoc\\project\\AngularJS\\flickr",
   "author": {
     "name": "Angular Core Team",
     "email": "angular-core+npm@google.com"
@@ -30,8 +34,6 @@
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
-  "bundleDependencies": false,
-  "deprecated": false,
   "description": "AngularJS module for making accessibility easy",
   "homepage": "http://angularjs.org",
   "jspm": {

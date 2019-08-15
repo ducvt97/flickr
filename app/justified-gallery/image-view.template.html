@@ -7,19 +7,15 @@
         
     <div class="split right">
         <div class="centered">
-            <md-button flex class="md-primary" ng-click="closeImageView()">
-                <i class="fas fa-times"></i>
+            <md-button flex class="md-primary" ng-click="closeImageView($event)">
+                Close<!-- <i class="fas fa-times"></i> -->
             </md-button>
         </div>
     </div>
     <div class="demo-dialog-content">
         <div layout="row" >
-                <img flex alt="Delicious donut" src="{{mainImage.src}}" width="200%" height="200%">
+                <img flex alt="Delicious donut" src="{{mainImage.src}}" width="600px" height="300px">
         </div>
     </div>
-    
-    <div layout="row" class="demo-dialog-button" >
-        <button ng-click="closeImageView()">Close</button>
-        
-    </div>
+
 </div>

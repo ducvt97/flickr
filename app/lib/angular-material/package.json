@@ -1,33 +1,35 @@
 {
-  "_from": "angular-material",
+  "_args": [
+    [
+      "angular-material@1.1.19",
+      "E:\\Hoc\\project\\AngularJS\\flickr"
+    ]
+  ],
+  "_from": "angular-material@1.1.19",
   "_id": "angular-material@1.1.19",
   "_inBundle": false,
   "_integrity": "sha512-R46TfnVsAkhRDcsbrFR5DB+Ja4LpPGugAQDHYItcvLYCIkVMf07cIx1q6WyFPiZQVwz3j+ECMveqsjX+jEUrgg==",
   "_location": "/angular-material",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "angular-material",
+    "raw": "angular-material@1.1.19",
     "name": "angular-material",
     "escapedName": "angular-material",
-    "rawSpec": "",
+    "rawSpec": "1.1.19",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "1.1.19"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/angular-material/-/angular-material-1.1.19.tgz",
-  "_shasum": "1c30b3143edd8765660ff30367d9fed03c29338d",
-  "_spec": "angular-material",
-  "_where": "D:\\project\\angularJS\\my-flickr",
+  "_spec": "1.1.19",
+  "_where": "E:\\Hoc\\project\\AngularJS\\flickr",
   "bugs": {
     "url": "https://github.com/angular/material/issues"
   },
-  "bundleDependencies": false,
-  "deprecated": false,
   "description": "This repository is used for publishing the AngularJS Material v1.x library and localized installs using `npm`. The component source-code for this library is in the [AngularJS Material repository](https://github.com/angular/material).",
   "format": "cjs",
   "homepage": "https://material.angularjs.org",
