@@ -1,21 +1,37 @@
 <div role="dialog" aria-label="Eat me!" layout="column" layout-align="center center">
-    <div class="split left">
-        <div class="centered">
-            <!-- <img flex alt="Delicious donut" src="{{mainImage.src}}"> -->
+    <div style="width: 120%; height: 120%;">
+        <div >
+            <img flex alt="Delicious donut" src="{{mainImage.src}}" style="width: 120%; height: 120%;">
         </div>
     </div>
+
+    <div class="split right">
         
     <div class="split right">
         <div class="centered">
             <md-button flex class="md-primary" ng-click="closeImageView($event)">
-                Close<!-- <i class="fas fa-times"></i> -->
+                <i class="fas fa-times"></i>
             </md-button>
+            <md-button flex class="md-primary" ng-click="showNextImage($event)" id="nextImgBtn">
+                <i class="fas fa-chevron-right"></i>
+            </md-button>
+            <md-button flex class="md-primary" ng-click="showPreviousImage($event)" id="prevImgBtn">
+                <i class="fas fa-chevron-left"></i>
+            </md-button>
+            <p>Title: {{imageInfo.title._content}}</p>
+            <p>Owner: {{imageInfo.owner.username}}</p>
+            <p>Description: {{imageInfo.description._content}}</p>
+            <div>
+                Tags: 
+                <span ng-repeat="tag in imageInfo.tags.tag">{{tag._content}}, </span>
+            </div>
+            
         </div>
     </div>
     <div class="demo-dialog-content">
-        <div layout="row" >
-                <img flex alt="Delicious donut" src="{{mainImage.src}}" width="600px" height="300px">
-        </div>
+        <!-- <div layout="row" style="width: 200%; height: 200%;">
+                <img flex alt="Delicious donut" src="{{mainImage.src}}" style="width: 200%; height: 200%;">
+        </div> -->
     </div>
 
 </div>

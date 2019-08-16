@@ -4,13 +4,17 @@
   <head>
     <meta charset="utf-8">
     <title>MyFlickr</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="justified-gallery/justified-gallery.css" />
-    <link rel="stylesheet" href="lib/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="main-header/main-header.css" />
+    
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
     <script src="lib/angular-aria/angular-aria.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
@@ -27,10 +31,16 @@
     <script src="justified-gallery/justified-gallery.module.js"></script>
     <script src="justified-gallery/justified-gallery.component.js"></script>
     <script src="justified-gallery/justified-gallery.controller.js"></script>
+    <script src="main-header/main-header.module.js"></script>
+    <script src="main-header/main-header.component.js"></script>
+    <script src="main-header/main-header.controller.js"></script>
 
   </head>
   <body>
-    <div ng-view></div>
+    <main-header></main-header>
+    <div class="container">
+        <div ui-view></div>
+    </div>
 
   </body>
 </html>
