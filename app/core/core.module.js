@@ -1,3 +1,3 @@
 'use strict'
 
-angular.module('core', ['core.image']);
+angular.module('core', ['core.flickr']);

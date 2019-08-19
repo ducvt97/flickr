@@ -1,6 +1,6 @@
 'use strict'
 
-// import { isNullOrUndefined } from "util";
+var justifiedLayout = require('justified-layout');
 
 
 angular.
@@ -8,43 +8,102 @@ angular.
         .controller('JustifiedGalleryController', JustifiedGalleryController)
         .controller('ImageViewController', ImageViewController);
 
-function JustifiedGalleryController ($mdPanel, GetImageList, CreateImageUrl, $scope){
+function JustifiedGalleryController ($mdPanel, GetImageList, CreateImageUrl, GetImageInfo, GetImageSize, $scope){
     $scope._mdPanel = $mdPanel;
     $scope.images = [];
 
     $scope.mainImage;
     $scope.panelRef;
 
+    var sizeConfig = {sizes:[],className:"various", config:{}};
+
     loadMoreImages();
 
-    function loadMoreImages(){
+    function delay() {
+        return new Promise(resolve => setTimeout(resolve, 400));
+    }
+
+    async function createNewImageObject(item, i) {
+        
+        await delay();
+        
+        let img = {
+            'id': item.id,
+            'index': i,
+            'src': CreateImageUrl.get(item),
+            'detail': {},
+            'layout': {}
+        }
+        
+        GetImageSize.get(item.id).query(function(response){
+            let sizeResponse = response.sizes.size[3];
+            sizeConfig.sizes.push(
+                sizeResponse.width/
+                sizeResponse.height
+            );
+            console.log(sizeResponse);
+        });
+
+        // GetImageInfo.get(item.id).query(function(response){
+        //     img.detail = response.photo;
+        // });
+        
+        return img;
+        
+    }
+
+    async function loadMoreImages(){
         let imgDetail = [];
-        GetImageList.query(function(response){
+        let imageList = [];
+
+        sizeConfig = {sizes:[],className:"various", config:{}};
+        
+        GetImageList.query(async function(response){
             imgDetail = response.photos.photo;
+            
             let i = $scope.images.length;
-
-            for (var index in imgDetail){
-                let img = {
-                    'index': i + 1,
-                    'id': imgDetail[index].id,
-                    'src': CreateImageUrl.get(imgDetail[index]),
-                    'title': imgDetail[index].title,
-                    'span': {
-                        'row': 1,
-                        'col': 1
-                    }
-                }
-
-                if (i == 1 || i % 12 == 0 || i % 5 == 0){
-                    img.span.col = img.span.row = 2;
-                }else if (i % 4 == 0){
-                    img.span.col = 2;
-                }
-
-                $scope.images.push(img);
+            for (const item of imgDetail) {
+                let img = await createNewImageObject(item, i);
+                imageList.push(img);
                 i++;
             }
+
+            // for (let index in imgDetail){
+            //     let img = {
+            //         'index': i,
+            //         'src': CreateImageUrl.get(imgDetail[index]),
+            //         'detail': {},
+            //         'layout': {}
+            //     }
+                
+                
+            //     GetImageSize.get(imgDetail[index].id).query(function(response){
+            //         let sizeResponse = response.sizes.size[3];
+            //         sizeConfig.sizes.push(
+            //             sizeResponse.width/
+            //             sizeResponse.height
+            //         );
+            //     });
+
+            //     GetImageInfo.get(imgDetail[index].id).query(function(response){
+            //         img.detail = response.photo;
+            //     });
+            //     //console.log(img);
+            //     imageList.push(img);
+            //     i++;
+                
+            // }
+            
+            let layout = justifiedLayout(sizeConfig.sizes, sizeConfig.config);
+            console.log(layout);
+            for (let index in imageList){
+                imageList[index].layout = layout.boxes[index];
+                //console.log($scope.images);
+            }
+            $scope.images = $scope.images.concat(imageList);
+            console.log($scope.images);
         });
+        
     }
 
     $scope.loadMoreImages = function(){
@@ -69,7 +128,7 @@ function JustifiedGalleryController ($mdPanel, GetImageList, CreateImageUrl, $sc
             position: position,
             trapFocus: true,
             zIndex: 150,
-            clickOutsideToClose: false,
+            clickOutsideToClose: true,
             escapeToClose: true,
             focusOnOpen: true
         };
@@ -82,14 +141,12 @@ function ImageViewController($scope, $document, mdPanelRef, GetImageInfo, param)
     $scope.mainImage = angular.copy(param.image);
     $scope.images = angular.copy(param.images);
     $scope._mdPanelRef = mdPanelRef;
-    $scope.imageInfo;
-    $scope.searchList;
 
     setImageInfo();
 
     function setImageInfo(){
         GetImageInfo.get($scope.mainImage.id).query(function(response){
-            $scope.imageInfo = response.photo;
+            $scope.mainImage.detail = response.photo;
         });
     }
 
@@ -100,42 +157,36 @@ function ImageViewController($scope, $document, mdPanelRef, GetImageInfo, param)
     };
     
     $scope.showPreviousImage = function(){
-        let prevIndex = $scope.mainImage.index - 2;
+        let prevIndex = $scope.mainImage.index - 1;
         if($scope.images[prevIndex] != null && $scope.images[prevIndex] != undefined){
             $scope.mainImage = $scope.images[prevIndex];
             setImageInfo();
-            // var nextBtn = angular.element(document).find('#nextImgBtn');
-            // nextBtn.removeClass('animate-show-hide');
+            
             let queryResult = $document[0].getElementById('nextImgBtn')
             let nextBtn = angular.element(queryResult);
-            nextBtn.removeClass('animate-show-hide');
+            nextBtn.removeClass('hidden-element');
         }
         if($scope.images[prevIndex - 1] == null || $scope.images[prevIndex - 1] == undefined){
-            let queryResult = $document[0].getElementById('prevImgBtn')
+            let queryResult = $document[0].getElementById('prevImgBtn');
             let prevBtn = angular.element(queryResult);
-            prevBtn.addClass('animate-show-hide');
-            // var prevBtn = angular.element(document).find('#prevImgBtn');
-            // prevBtn.addClass('animate-show-hide');
+            prevBtn.addClass('hidden-element');
         }
     };
     
     $scope.showNextImage = function(){
-        let nextIndex = $scope.mainImage.index;
+        let nextIndex = $scope.mainImage.index + 1;
         if($scope.images[nextIndex] != null && $scope.images[nextIndex] != undefined){
             $scope.mainImage = $scope.images[nextIndex];
             setImageInfo();
-            // var prevBtn = angular.element(document).find('#prevImgBtn');
-            // prevBtn.removeClass('animate-show-hide');
+            
             let queryResult = $document[0].getElementById('prevImgBtn')
             let prevBtn = angular.element(queryResult);
-            prevBtn.removeClass('animate-show-hide');
+            prevBtn.removeClass('hidden-element');
         }
         if($scope.images[nextIndex + 1] == null || $scope.images[nextIndex + 1] == undefined){
-            // var nextBtn = angular.element(document).find('#nextImgBtn');
-            // nextBtn.addClass('animate-show-hide');
             let queryResult = $document[0].getElementById('nextImgBtn')
             let nextBtn = angular.element(queryResult);
-            nextBtn.addClass('animate-show-hide');
+            nextBtn.addClass('hidden-element');
         }
     };
 }

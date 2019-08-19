@@ -14,7 +14,7 @@
     "angular-route": "1.7.x",
     "angular-ui-router": "^1.0.22",
     "bootstrap": "3.3.x",
-    "ng-image-gallery": "^2.1.4"
+    "justified-layout": "^3.0.0"
   },
   "devDependencies": {
     "angular-mocks": "1.7.x",

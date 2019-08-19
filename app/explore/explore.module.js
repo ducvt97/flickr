@@ -1,5 +1,5 @@
 (function(){
     'use strict'
 
-    angular.module('explore', ['core.image', 'justifiedGallery']);
+    angular.module('explore', ['core.flickr', 'justifiedGallery']);
 })()

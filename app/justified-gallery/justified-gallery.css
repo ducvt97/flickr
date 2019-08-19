@@ -1,66 +1,119 @@
-/* .demo-md-panel {
-    min-height: 500px;
-}
-  
-.demo-dialog-example {
-    background: white;
-    border-radius: 4px;
-    box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
-        0 13px 19px 2px rgba(0, 0, 0, 0.14),
-        0 5px 24px 4px rgba(0, 0, 0, 0.12);
-    width: 600px;
-}
-
-.demo-dialog-content {
-    padding: 0 15px;
-    width: 100%;
-}
-
-.demo-dialog-content img {
-    height: 300px;
-    margin: auto;
-}
-
-.demo-dialog-button {
-    width: 100%;
-} */
 /* .gallery-container{
     margin: 90px 10px 10px 10px !important;
 } */
-.split {
+div{
+    display: block;
+}
+a{
+    color: #385898;
+    cursor: pointer;
+    text-decoration: none;
+}
+.hidden-element{
+    display: none;
+}
+
+/* Style the image gallery */
+.justified {
+    margin-top: 90px;
+    margin-bottom: 10px;
+    position: relative;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    /* width: 1060px; */
+}
+.box {
+    position: absolute;
+}
+
+/* Style the image view */
+.image-wrapper{
+    position: relative;
+    background-color: #000;
     height: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    /* padding-top: 20px; */
+    min-height: 480px;
+    z-index: 2;
+    float: left;
 }
-
-/* Control the left side */
-.left {
-    width: 70%;
-    left: 0;
+.image-stage{
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    min-height: 402px;
+    text-align: center;
+    width: 100%;
 }
-
-/* Control the right side */
-.right {
-    width: 30%;
-    right: 0;
-    background-color: white;
+.image-box{
+    display: inline-block;
+    margin: 0 auto;
+    vertical-align: middle;
 }
-
-/* If you want the content centered horizontally and vertically */
-/* .centered {
+.navi-btn{
+    height: 45px;
+    margin-top: -22px;
+    opacity: .8;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-} */
+    transform: translateZ(0);
+    transition: opacity 1s;
+    width: 48px;
+    z-index: 11;
+    line-height: 1.28;
+    font-weight: 1000;
+    font-size: 28px;
+    min-width: 48px;
+}
+#prevImgBtn{
+    left: 10px;
+}
+#nextImgBtn{
+    right: 10px;
+}
+#closeBtn{
+    line-height: normal;
+    opacity: .8;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    transition: opacity 1s cubic-bezier(.23, 1, .32, 1);
+    z-index: 2;
+    font-size: 20px;
+}
 
-/* Style the image inside the centered container, if needed */
-.centered img {
-    width: 400;
-    height: 300;
-    border-radius: 50%;
+/* Style the image detail */
+.detail-wrapper{
+    text-align: left;
+    background: #fff;
+    height: 100%;
+    position: relative;
+    border-radius: 0 0 3px 3px;
+    color: #1c1e21;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 1;
+    font-size: 13px;
+    max-height: 100%;
+}
+.detail-scroller{
+    margin-left: -100px;
+    margin-right: -20px;
+    padding-left: 100px;
+    padding-right: 20px;
+    height: auto;
+    width: 100% !important;
+    direction: ltr;
+    overflow: hidden;
+}
+.detail-scroller-area{
+    overscroll-behavior: contain;
+    margin-left: -100px;
+    margin-right: -50px;
+    padding-left: 100px;
+    padding-right: 50px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    outline: none;
 }
