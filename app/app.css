@@ -2,7 +2,11 @@ body{
     background-color: #f3f5f6
 }
 
-/* .container{
-    margin: 90px 10px 10px 10px !important;
-    z-index: 0 !important;
-} */
+.container{
+    margin-top: 90px;
+    margin-bottom: 10px;
+}
+
+.info-line{
+    margin-top: 10px;
+}

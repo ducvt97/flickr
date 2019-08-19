@@ -1,19 +1,22 @@
 'use strict'
 
-angular.
-    module('explore')
-        .controller('ExploreController', exploreController);
+angular
+    .module('search')
+        .controller('SearchController', searchController);
 
-function exploreController($mdPanel, GetImageList, CreateImageUrl, GetImageSize, $scope, $q){
+function searchController(SearchPhoto, CreateImageUrl, GetImageSize, $mdPanel, $stateParams, $scope, $q){
     $scope._mdPanel = $mdPanel;
     $scope.images = [];
-    $scope.page = 1;
-    var imageList = [];
+    $scope.searchKey = $stateParams.searchKey;
+    $scope.page = 0;
 
     $scope.mainImage;
     $scope.panelRef;
 
     var sizeConfig = {sizes:[],className:"various", config:{}};
+    var imageList = [];
+
+    loadMoreImages();
 
     function createNewImageObject(item, i) { 
         var deferred = $q.defer();     
@@ -44,7 +47,7 @@ function exploreController($mdPanel, GetImageList, CreateImageUrl, GetImageSize,
 
         sizeConfig = {sizes:[],className:"various", config:{}};
         
-        GetImageList.get($scope.page).query(function(response){
+        SearchPhoto.get($scope.searchKey, $scope.page).query(function(response){
             imgDetail = response.photos.photo;
             
             let i = $scope.images.length;

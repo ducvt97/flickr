@@ -18,13 +18,17 @@ angular.
 
 
 function getImageList($resource, FLICKR){
-    return $resource(`https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=${FLICKR.api_key}&format=json&nojsoncallback=1&per_page=10&page=0`,
-    {}, {
-        query:{
-            method: 'GET',
-            isArray: false
+    return {
+        get: function(page){
+            return $resource(`https://api.flickr.com/services/rest/?method=flickr.interestingness.getList&api_key=${FLICKR.api_key}&format=json&nojsoncallback=1&per_page=20&page=${page}`,
+            {}, {
+                query:{
+                    method: 'GET',
+                    isArray: false
+                }
+            });
         }
-    });
+    }
 }
 
 function getImageInfo($resource, FLICKR){
@@ -57,8 +61,8 @@ function getImageSize($resource, FLICKR){
 
 function searchPhoto($resource, FLICKR){
     return {
-        get: function(searchKey){
-            return $resource(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKR.api_key}&text=${searchKey}&format=json&nojsoncallback=1&per_page=20&page=0`,
+        get: function(searchKey, page){
+            return $resource(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKR.api_key}&text=${searchKey}&format=json&nojsoncallback=1&per_page=20&page=${page}`,
             {}, {
                 query:{
                     method: 'GET',
@@ -72,7 +76,7 @@ function searchPhoto($resource, FLICKR){
 function getUserInfo($resource, FLICKR){
     return {
         get: function(user_id){
-            return $resource(`https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=${FLICKR.api_key}&text=${user_id}&format=json&nojsoncallback=1`,
+            return $resource(`https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=${FLICKR.api_key}&user_id=${user_id}&format=json&nojsoncallback=1`,
             {}, {
                 query:{
                     method: 'GET',

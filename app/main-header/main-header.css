@@ -19,7 +19,7 @@
     margin-right: 70px;
 }
 .logo{
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
     font-size: 36px;
 }
 .search-bar{

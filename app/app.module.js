@@ -8,6 +8,9 @@ angular.module('myflickrApp', [
   'ngMessages',
   'core',
   'explore',
-  'justifiedGallery',
-  'mainHeader'
+  'imageView',
+  'infinite-scroll',
+  'mainHeader',
+  'user',
+  'search'
 ]);

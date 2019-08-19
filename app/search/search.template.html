@@ -1,0 +1,13 @@
+<div style="margin-bottom: 20px; font-size: 30px;">Result for: {{searchKey}}</div>
+<div class="gallery-container justified" flex ng-cloak layout-wrap layout-align="center center" layout="row">
+    <div infinite-scroll="loadMoreImages()" infinite-scroll-use-document-bottom="true" infinite-scroll-disabled="page >= 2">
+        <div ng-repeat="image in images track by $index" class="box" 
+            style="width: {{image.layout.width}}px; 
+                height: {{image.layout.height}}px;
+                top: {{image.layout.top}}px; 
+                left: {{image.layout.left}}px;
+                background-image: url({{image.src}});"
+            ng-click="showImageView($event, {'image': image, 'images': images})">
+        </div>
+    </div>   
+</div>
